@@ -1,10 +1,13 @@
 import { BRAND_COLOR_LM } from '@shlinkio/shlink-frontend-kit';
 import type { ManifestOptions } from 'vite-plugin-pwa';
+import pack from './package.json' with { type: 'json' };
+
+const homepage = (pack.homepage ?? '').trim() || '/';
 
 export const manifest: Partial<ManifestOptions> = {
   short_name: 'Shlink',
   name: 'Shlink Web Client',
-  start_url: '/',
+  start_url: homepage,
   display: 'standalone',
   theme_color: BRAND_COLOR_LM, // Toolbar color
   background_color: BRAND_COLOR_LM, // Splash screen background color

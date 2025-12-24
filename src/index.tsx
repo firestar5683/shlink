@@ -13,11 +13,13 @@ import { setUpStore } from './store';
 import './tailwind.css';
 
 const store = setUpStore();
+const homepage = pack.homepage?.trim() ?? '';
+const basename = homepage.endsWith('/') ? homepage.slice(0, -1) : homepage;
 
 createRoot(document.getElementById('root')!).render(
   <ContainerProvider value={container}>
     <Provider store={store}>
-      <BrowserRouter basename={pack.homepage}>
+      <BrowserRouter basename={basename || undefined}>
         <ErrorHandler>
           <ScrollToTop>
             <App />
